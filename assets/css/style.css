@@ -2,21 +2,96 @@
   border: 1px solid red !important;
 }
 
-body {
+/* body {
   background-image: url("/assets/images/deathStar.jpg");
-}
+} */
 
 p {
   color: white;
 }
 
 #slot {
-  width: 300px;
+  /* width: 300px; */
+  float: left;
   border: 15px solid green;
-  padding: 50px;
+  padding: 5px;
   margin: 20px;
   background-color: burlywood;
 }
-#charSelectSlot01{
-    float: left;
+
+#charSelectSlot_0 {
+  float: left;
+  border: 15px solid green;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
 }
+#charSelectSlot_1 {
+  float: left;
+  border: 15px solid green;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
+#charSelectSlot_2 {
+  float: left;
+  border: 15px solid green;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
+#charSelectSlot_3 {
+  float: left;
+  border: 15px solid green;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
+
+#enemyCharSelectSlot_0 {
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+#enemyCharSelectSlot_1 {
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+#enemyCharSelectSlot_2 {
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+#EnemycharSelectSlot_0 {
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+  #EnemycharSelectSlot_1 {
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+  #EnemycharSelectSlot_2 {
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
