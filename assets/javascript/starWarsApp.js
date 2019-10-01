@@ -8,6 +8,8 @@ var starWars = {
   enemyDiv_1: document.getElementById("enemyChar_1"),
   enemyDiv_2: document.getElementById("enemyChar_2"),
 
+  defenderDiv: document.getElementById("defenderChar"),
+
   char: {
     healthPoints: 0,
     attackPower: 0,
@@ -111,13 +113,13 @@ var starWars = {
       } else {
         charList[i].chosenChar = false;
         charList[i].enemyChar = true;
-        charList[i].defenderChar = true;
+        charList[i].defenderChar = false;
       }
     }
 
-    enemyList = charList;
-    console.log(selectedChar + " vs ");
-    console.log(enemyList);
+    // enemyList = charList;
+    // console.log(selectedChar + " vs ");
+    // console.log(enemyList);
   },
 
   // * Dynamically display the Chars to select from
@@ -140,18 +142,12 @@ var starWars = {
         enemyList.push(charList[i]);
       }
     }
-    // // * checks for defender, if found, removes
-    // for (i = 0; i < enemyList.length; i++) {
-    //   if (enemyList[i].defenderChar) {
-    //     enemyList.splice(i, 1);
-    //     defenderFound = true;
-    //   }
-    // }
+    
 
     for (i = 0; i < charList.length; i++) {
       console.log(charList[i].chosenChar);
       if (charList[i].chosenChar) {
-        console.log("got a match " + charList[i].name);
+        console.log("chosenChar " + charList[i].name);
         this.charDiv_0.innerHTML = charList[i].name;
       } else {
         this.charDiv_1.innerHTML = "";
@@ -160,20 +156,33 @@ var starWars = {
       }
     }
 
-    this.enemyDiv_0.innerHTML = enemyList[0].name;
-    this.enemyDiv_1.innerHTML = enemyList[1].name;
-    this.enemyDiv_2.innerHTML = enemyList[2].name;
+    if (enemyList.length === 3) {
+      this.enemyDiv_0.innerHTML = enemyList[0].name;
+      this.enemyDiv_1.innerHTML = enemyList[1].name;
+      this.enemyDiv_2.innerHTML = enemyList[2].name;
+    } else if (enemyList.length === 2) {
+      this.enemyDiv_0.innerHTML = enemyList[0].name;
+      this.enemyDiv_1.innerHTML = enemyList[1].name;
+      this.enemyDiv_2.innerHTML = "";
+    } else {
+      this.enemyDiv_0.innerHTML = enemyList[0].name;
+      this.enemyDiv_1.innerHTML = "";
+      this.enemyDiv_2.innerHTML = "";
+    }
 
-    // if (defenderFound) {
-    //   this.enemyDiv_0.innerHTML = enemyList[0].name;
-    //   this.enemyDiv_1.innerHTML = enemyList[1].name;
-    // } else {
-    //   this.enemyDiv_0.innerHTML = enemyList[0].name;
-    //   this.enemyDiv_1.innerHTML = enemyList[1].name;
-    //   this.enemyDiv_2.innerHTML = enemyList[2].name;
-    // }
+    if (enemyList.length <= 2) {
+        console.log("enemyList <= 2")
+        for (i =0; i < charList.length; i++){
+            if (charList[i].defenderChar) {
+                this.defenderDiv.innerHTML = charList[i].name;
+                console.log(charList[i]);
 
-   
+            }
+        }
+         
+
+    }
+    
   },
 
   // * Dynamically display the Enemys to fight
@@ -211,21 +220,22 @@ var starWars = {
       starWars.updateTeams(selectedChar, charList);
       starWars.displayUpdate(charList);
       // ? Can I break out of the click event
-      
     });
 
     $(".enemy").click(function(event) {
       //   $("#col-4").html("clicked: " + event.target.nodeName);
-      enemyChar = event.target.textContent;
-      console.log(enemyChar);
+      defenderChar = event.target.textContent;
+      console.log("defenderChar: " + defenderChar);
       for (i = 0; i < charList.length; i++) {
-        if (charList[i].name === enemyChar) {
+        if (charList[i].name === defenderChar) {
+            console.log(charList[i])
           charList[i].enemyChar = false;
           charList[i].defenderChar = true;
+          console.log(charList[i])
         }
       }
-      console.log(enemyChar);
-    //   starWars.displayUpdate(charList);
+
+        starWars.displayUpdate(charList);
     });
   }
 };
