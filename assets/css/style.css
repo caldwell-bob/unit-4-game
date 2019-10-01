@@ -95,3 +95,27 @@ p {
     margin: 20px;
     background-color: burlywood;
   }
+
+  #enemyChar_0{
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+  #enemyChar_1{
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
+
+  #enemyChar_2{
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
