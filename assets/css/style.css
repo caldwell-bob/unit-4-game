@@ -119,3 +119,11 @@ p {
     margin: 20px;
     background-color: burlywood;
   }
+
+  #defenderChar{
+    float: left;
+    border: 15px solid red;
+    padding: 5px;
+    margin: 20px;
+    background-color: burlywood;
+  }
