@@ -134,7 +134,7 @@ var starWars = {
 
   // * method for dynamically displaying Char, Enemies
   displayUpdate: function(charList) {
-    console.log("in disPlayUpdate");
+    // console.log("in disPlayUpdate");
     var enemyList = [];
     var defenderFound = false;
     // * Create enemy list
@@ -145,14 +145,20 @@ var starWars = {
     }
 
     for (i = 0; i < charList.length; i++) {
-      console.log(charList[i].chosenChar);
+    //   console.log(charList[i].chosenChar);
       if (charList[i].chosenChar) {
-        console.log("chosenChar " + charList[i].name);
+        // console.log("chosenChar " + charList[i].name);
         this.charDiv_0.innerHTML = charList[i].name;
       } else {
-        this.charDiv_1.innerHTML = "";
-        this.charDiv_2.innerHTML = "";
-        this.charDiv_3.innerHTML = "";
+          // TODO update css to hide empty elements vs using empty strings
+        // $('this.charDiv_1').hide();
+            
+        this.charDiv_1.hidden = true;
+        this.charDiv_2.hidden = true;
+        this.charDiv_3.hidden = true;
+        // this.charDiv_1.innerHTML = "";
+        // this.charDiv_2.innerHTML = "";
+        // this.charDiv_3.innerHTML = "";
       }
     }
 
@@ -187,8 +193,8 @@ var starWars = {
 
   // * Dynamically display the Enemys to fight
   displayEnemy: function(enemyList) {
-    console.log(charList);
-    console.log(charList[0].name);
+    // console.log(charList);
+    // console.log(charList[0].name);
 
     var enemyDiv_0 = document.getElementById("EnemycharSelectSlot_0");
     var enemyDiv_1 = document.getElementById("EnemycharSelectSlot_1");
@@ -275,14 +281,14 @@ var starWars = {
       for (i = 0; i < charList.length; i++) {
         if (charList[i].chosenChar) {
           attackerChar = charList[i];
-          console.log("The Attacker: " + attackerChar.name + " " + i);
+        //   console.log("The Attacker: " + attackerChar.name + " " + i);
         }
       }
-      console.log("defenderChar: " + defenderChar.name);
+    //   console.log("defenderChar: " + defenderChar.name);
       starWars.attackMode(attackerChar, defenderChar);
     });
   }
 };
 
-console.log("starWarsApp.playGame()");
+// console.log("starWarsApp.playGame()");
 starWars.playGame();
