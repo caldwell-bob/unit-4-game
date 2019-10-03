@@ -10,6 +10,10 @@ var starWars = {
 
   defenderDiv: document.getElementById("defenderChar"),
 
+  attackResultsDiv: document.getElementById("attacker"),
+  ctrAttackResultsDiv: document.getElementById("defender"),
+
+
   char: {
     healthPoints: 0,
     attackPower: 0,
@@ -190,17 +194,24 @@ var starWars = {
     var atkPwr = attacker.attackPower;
     var winner = false;
     while (attacker.healthPoints > 0 && defender.healthPoints > 0) {
+        setTimeout(2000);
       console.log(
         "attacker hp: " +
           attacker.healthPoints +
           " | defender hp: " +
           defender.healthPoints
       );
+
+      this.attackResultsDiv.textContent = attacker.name + " attacks for " + attacker.attackPower + " dmg.";
       console.log(
         attacker.name + " attacks for " + attacker.attackPower + " dmg."
       );
+
+
       defender.healthPoints -= atkPwr;
       atkPwr += attacker.attackPower;
+
+      this.ctrAttackResultsDiv.textContent = defender.name + " counter attacks for " + defender.ctrAttackPower + " dmg."
       console.log(
         defender.name +
           "counter attacks for " +
