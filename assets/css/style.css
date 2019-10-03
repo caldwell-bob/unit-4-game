@@ -10,6 +10,8 @@ p {
   color: white;
 }
 
+.hidden{ display: none; }
+
 #slot {
   /* width: 300px; */
   float: left;
