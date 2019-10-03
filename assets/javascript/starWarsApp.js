@@ -222,6 +222,7 @@ var starWars = {
       // ? Can I break out of the click event
     });
 
+    // * Select a defender from the enemyList and redisplay
     $(".enemy").click(function(event) {
       //   $("#col-4").html("clicked: " + event.target.nodeName);
       defenderChar = event.target.textContent;
@@ -237,6 +238,11 @@ var starWars = {
 
         starWars.displayUpdate(charList);
     });
+
+    
+
+
+
   }
 };
 

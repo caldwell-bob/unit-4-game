@@ -127,3 +127,9 @@ p {
     margin: 20px;
     background-color: burlywood;
   }
+
+  #attack{
+      float:left;
+      margin: 5px;
+      background-color: burlywood;
+  }
