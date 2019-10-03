@@ -33,7 +33,7 @@ var starWars = {
     //   name: "",
     //   charImage: ""
     // };
-    // ? Why does this beinbg outside of the for loop muck it all up, scope wise
+    // ? Why does this being outside of the for loop muck it all up, scope wise
     var usedAttackPower = [];
     var usedHealthPoints = [];
     var usedCtrAttackPower = [];
@@ -49,10 +49,11 @@ var starWars = {
       };
       char.name = initCharList[i];
       // * generate random attackPower
-      var attackPower = Math.floor(Math.random() * 100 + 200);
+      //   var attackPower = Math.floor(Math.random() * 20 + 200);
+      var attackPower = Math.floor(Math.random() * 20) + 10;
       // * make sure attackPower hasn't been used before
       if (usedAttackPower.includes(attackPower)) {
-        attackPower = Math.floor(Math.random() * 100 + 200);
+        attackPower = Math.floor(Math.random() * 20) + 10;
       }
       char.attackPower = attackPower;
 
@@ -65,10 +66,10 @@ var starWars = {
       char.healthPoints = healthPoints;
 
       // * generate random ctrAttackPower
-      var ctrAttackPower = Math.floor(Math.random() * 100 + 200);
+      var ctrAttackPower = Math.floor(Math.random() * 10) +1; 
       // * make sure healthPoints hasn't been used before
       if (usedCtrAttackPower.includes(ctrAttackPower)) {
-        ctrAttackPower = Math.floor(Math.random() * 100 + 200);
+        ctrAttackPower = Math.floor(Math.random() * 10) +1;
       }
       char.ctrAttackPower = ctrAttackPower;
 
@@ -142,7 +143,6 @@ var starWars = {
         enemyList.push(charList[i]);
       }
     }
-    
 
     for (i = 0; i < charList.length; i++) {
       console.log(charList[i].chosenChar);
@@ -164,25 +164,25 @@ var starWars = {
       this.enemyDiv_0.innerHTML = enemyList[0].name;
       this.enemyDiv_1.innerHTML = enemyList[1].name;
       this.enemyDiv_2.innerHTML = "";
-    } else {
+    } else if (enemyList.length === 1) {
       this.enemyDiv_0.innerHTML = enemyList[0].name;
+      this.enemyDiv_1.innerHTML = "";
+      this.enemyDiv_2.innerHTML = "";
+    } else {
+      this.enemyDiv_0.innerHTML = "";
       this.enemyDiv_1.innerHTML = "";
       this.enemyDiv_2.innerHTML = "";
     }
 
     if (enemyList.length <= 2) {
-        console.log("enemyList <= 2")
-        for (i =0; i < charList.length; i++){
-            if (charList[i].defenderChar) {
-                this.defenderDiv.innerHTML = charList[i].name;
-                console.log(charList[i]);
-
-            }
+      console.log("enemyList <= 2");
+      for (i = 0; i < charList.length; i++) {
+        if (charList[i].defenderChar) {
+          this.defenderDiv.innerHTML = charList[i].name;
+          console.log(charList[i]);
         }
-         
-
+      }
     }
-    
   },
 
   // * Dynamically display the Enemys to fight
@@ -199,9 +199,38 @@ var starWars = {
     enemyDiv_2.innerHTML = enemyList[2].name;
   },
 
+  attackMode: function(attacker, defender) {
+    var atkPwr = attacker.attackPower;
+    var winner = false;
+    while (attacker.healthPoints > 0 && defender.healthPoints > 0) {
+      console.log(
+        "attacker hp: " +
+          attacker.healthPoints +
+          " | defender hp: " +
+          defender.healthPoints
+      );
+      console.log(
+        attacker.name + " attacks for " + attacker.attackPower + " dmg."
+      );
+      defender.healthPoints -= atkPwr;
+      atkPwr += attacker.attackPower;
+      console.log(defender.name + "counter attacks for " + defender.ctrAttackPower + " dmg.");
+      attacker.healthPoints = attacker.healthPoints - defender.ctrAttackPower;
+    }
+    if (attacker.healthPoints <= 0) {
+        console.log(attacker.name + " losses the battle with " + attacker.healthPoints + " health remaining!!");
+
+    } else {
+        console.log(attacker.name + " wins the battle with " + attacker.healthPoints + " health remaining!!");
+        winner = true;
+    }
+    return winner;
+  },
+
   // * Main Method used to start playing the game ***************************** playGame()
   playGame: function() {
     var enemyChar = "";
+    var attackerChar = {};
     console.log("in method:playGame");
     var selectedChar = "";
     // * Call method to init the charStats
@@ -221,28 +250,37 @@ var starWars = {
       starWars.displayUpdate(charList);
       // ? Can I break out of the click event
     });
-
+    console.log(selectedChar);
     // * Select a defender from the enemyList and redisplay
     $(".enemy").click(function(event) {
-      //   $("#col-4").html("clicked: " + event.target.nodeName);
       defenderChar = event.target.textContent;
       console.log("defenderChar: " + defenderChar);
       for (i = 0; i < charList.length; i++) {
         if (charList[i].name === defenderChar) {
-            console.log(charList[i])
+          console.log(charList[i]);
           charList[i].enemyChar = false;
           charList[i].defenderChar = true;
-          console.log(charList[i])
+          console.log(charList[i]);
+          defenderChar = charList[i];
+          console.log("defenderChar: " + defenderChar);
         }
       }
 
-        starWars.displayUpdate(charList);
+      starWars.displayUpdate(charList);
     });
 
-    
-
-
-
+    // * add event listener for Attack btn being clicked
+    $("#attack").click(function(event) {
+      // TODO fix scoping issue so I don't have to reloop to find attackerChar
+      for (i = 0; i < charList.length; i++) {
+        if (charList[i].chosenChar) {
+          attackerChar = charList[i];
+          console.log("The Attacker: " + attackerChar.name + " " + i);
+        }
+      }
+      console.log("defenderChar: " + defenderChar.name);
+      starWars.attackMode(attackerChar, defenderChar);
+    });
   }
 };
 
