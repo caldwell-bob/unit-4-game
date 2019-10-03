@@ -24,7 +24,7 @@ var starWars = {
     enemyChar: false,
     defenderChar: false
   },
-
+  // TODO need to update char display to include name and HP
   // * method to initilize the various chars stats
   initCharStat: function() {
     console.log("In initCharStat");
@@ -37,7 +37,7 @@ var starWars = {
     //   name: "",
     //   charImage: ""
     // };
-    // ? Why does this being outside of the for loop muck it all up, scope wise
+    // ? Why does this being outside of the for loop muck it all up, scope wise  Two days to solve!!!!
     var usedAttackPower = [];
     var usedHealthPoints = [];
     var usedCtrAttackPower = [];
@@ -130,6 +130,7 @@ var starWars = {
   // * Dynamically display the Chars to select from
   displayChar: function(charList) {
     // ? How can I make this dynamic vs having to manually pass array info per index
+    // ? can the left side here be concatanated together
     this.charDiv_0.innerHTML = charList[0].name;
     this.charDiv_1.innerHTML = charList[1].name;
     this.charDiv_2.innerHTML = charList[2].name;
@@ -280,7 +281,7 @@ var starWars = {
 
       starWars.displayUpdate(charList);
     });
-
+    // TODO - (high) Need to redo attack logic to be turn based
     // * add event listener for Attack btn being clicked
     $("#attack").click(function(event) {
       // TODO (low) fix scoping issue so I don't have to reloop to find attackerChar
