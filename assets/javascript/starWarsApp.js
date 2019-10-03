@@ -66,10 +66,10 @@ var starWars = {
       char.healthPoints = healthPoints;
 
       // * generate random ctrAttackPower
-      var ctrAttackPower = Math.floor(Math.random() * 10) +1; 
+      var ctrAttackPower = Math.floor(Math.random() * 20) + 10;
       // * make sure healthPoints hasn't been used before
       if (usedCtrAttackPower.includes(ctrAttackPower)) {
-        ctrAttackPower = Math.floor(Math.random() * 10) +1;
+        ctrAttackPower = Math.floor(Math.random() * 20) + 10;
       }
       char.ctrAttackPower = ctrAttackPower;
 
@@ -141,24 +141,19 @@ var starWars = {
     for (i = 0; i < charList.length; i++) {
       if (charList[i].enemyChar) {
         enemyList.push(charList[i]);
+        console.log(charList[i].enemyChar);
       }
     }
 
     for (i = 0; i < charList.length; i++) {
-    //   console.log(charList[i].chosenChar);
+      //   console.log(charList[i].chosenChar);
       if (charList[i].chosenChar) {
         // console.log("chosenChar " + charList[i].name);
         this.charDiv_0.innerHTML = charList[i].name;
       } else {
-          // TODO update css to hide empty elements vs using empty strings
-        // $('this.charDiv_1').hide();
-            
         this.charDiv_1.hidden = true;
         this.charDiv_2.hidden = true;
         this.charDiv_3.hidden = true;
-        // this.charDiv_1.innerHTML = "";
-        // this.charDiv_2.innerHTML = "";
-        // this.charDiv_3.innerHTML = "";
       }
     }
 
@@ -169,15 +164,15 @@ var starWars = {
     } else if (enemyList.length === 2) {
       this.enemyDiv_0.innerHTML = enemyList[0].name;
       this.enemyDiv_1.innerHTML = enemyList[1].name;
-      this.enemyDiv_2.innerHTML = "";
+      this.enemyDiv_2.hidden = true;
     } else if (enemyList.length === 1) {
       this.enemyDiv_0.innerHTML = enemyList[0].name;
-      this.enemyDiv_1.innerHTML = "";
-      this.enemyDiv_2.innerHTML = "";
+      this.enemyDiv_1.hidden = true;
+      this.enemyDiv_2.hidden = true;
     } else {
-      this.enemyDiv_0.innerHTML = "";
-      this.enemyDiv_1.innerHTML = "";
-      this.enemyDiv_2.innerHTML = "";
+      this.enemyDiv_0.hidden = true;
+      this.enemyDiv_1.hidden = true;
+      this.enemyDiv_2.hidden = true;
     }
 
     if (enemyList.length <= 2) {
@@ -189,20 +184,6 @@ var starWars = {
         }
       }
     }
-  },
-
-  // * Dynamically display the Enemys to fight
-  displayEnemy: function(enemyList) {
-    // console.log(charList);
-    // console.log(charList[0].name);
-
-    var enemyDiv_0 = document.getElementById("EnemycharSelectSlot_0");
-    var enemyDiv_1 = document.getElementById("EnemycharSelectSlot_1");
-    var enemyDiv_2 = document.getElementById("EnemycharSelectSlot_2");
-
-    enemyDiv_0.innerHTML = enemyList[0].name;
-    enemyDiv_1.innerHTML = enemyList[1].name;
-    enemyDiv_2.innerHTML = enemyList[2].name;
   },
 
   attackMode: function(attacker, defender) {
@@ -220,15 +201,29 @@ var starWars = {
       );
       defender.healthPoints -= atkPwr;
       atkPwr += attacker.attackPower;
-      console.log(defender.name + "counter attacks for " + defender.ctrAttackPower + " dmg.");
+      console.log(
+        defender.name +
+          "counter attacks for " +
+          defender.ctrAttackPower +
+          " dmg."
+      );
       attacker.healthPoints = attacker.healthPoints - defender.ctrAttackPower;
     }
     if (attacker.healthPoints <= 0) {
-        console.log(attacker.name + " losses the battle with " + attacker.healthPoints + " health remaining!!");
-
+      console.log(
+        attacker.name +
+          " losses the battle with " +
+          attacker.healthPoints +
+          " health remaining!!"
+      );
     } else {
-        console.log(attacker.name + " wins the battle with " + attacker.healthPoints + " health remaining!!");
-        winner = true;
+      console.log(
+        attacker.name +
+          " wins the battle with " +
+          attacker.healthPoints +
+          " health remaining!!"
+      );
+      winner = true;
     }
     return winner;
   },
@@ -277,18 +272,15 @@ var starWars = {
 
     // * add event listener for Attack btn being clicked
     $("#attack").click(function(event) {
-      // TODO fix scoping issue so I don't have to reloop to find attackerChar
+      // TODO (low) fix scoping issue so I don't have to reloop to find attackerChar
       for (i = 0; i < charList.length; i++) {
         if (charList[i].chosenChar) {
           attackerChar = charList[i];
-        //   console.log("The Attacker: " + attackerChar.name + " " + i);
         }
       }
-    //   console.log("defenderChar: " + defenderChar.name);
       starWars.attackMode(attackerChar, defenderChar);
     });
   }
 };
 
-// console.log("starWarsApp.playGame()");
 starWars.playGame();

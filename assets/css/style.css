@@ -1,6 +1,6 @@
-/* * {
+* {
   border: 1px solid red !important;
-} */
+}
 
 /* body {
   background-image: url("/assets/images/deathStar.jpg");
@@ -10,7 +10,13 @@ p {
   color: white;
 }
 
-.hidden{ display: none; }
+.hidden {
+  display: none;
+  border: 15px;
+  padding: 5px;
+  margin: 20px;
+  height: 20px;
+}
 
 #slot {
   /* width: 300px; */
@@ -51,87 +57,87 @@ p {
 }
 
 #enemyCharSelectSlot_0 {
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
 #enemyCharSelectSlot_1 {
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
 #enemyCharSelectSlot_2 {
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
 #EnemycharSelectSlot_0 {
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #EnemycharSelectSlot_1 {
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+#EnemycharSelectSlot_1 {
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #EnemycharSelectSlot_2 {
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+#EnemycharSelectSlot_2 {
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #enemyChar_0{
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+#enemyChar_0 {
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #enemyChar_1{
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+#enemyChar_1 {
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #enemyChar_2{
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+#enemyChar_2 {
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #defenderChar{
-    float: left;
-    border: 15px solid red;
-    padding: 5px;
-    margin: 20px;
-    background-color: burlywood;
-  }
+#defenderChar {
+  float: left;
+  border: 15px solid red;
+  padding: 5px;
+  margin: 20px;
+  background-color: burlywood;
+}
 
-  #attack{
-      float:left;
-      margin: 5px;
-      background-color: burlywood;
-  }
+#attack {
+  float: left;
+  margin: 5px;
+  background-color: burlywood;
+}
